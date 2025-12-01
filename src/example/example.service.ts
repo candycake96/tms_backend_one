@@ -3,11 +3,11 @@ import { DatabaseService } from '../database/database.service';
 
 @Injectable()
 export class ExampleService {
-  constructor(private readonly dbService: DatabaseService) {}
+  constructor(private readonly db: DatabaseService) {}
 
   async getUsers() {
-    const pool = await this.dbService.getPool();
-    const result = await pool.request().query('SELECT * FROM company');
-    return result.recordset;
+    return this.db.executeQuery(
+      'SELECT * FROM company'
+    );
   }
 }
