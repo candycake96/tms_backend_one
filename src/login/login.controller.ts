@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { LoginService } from './login.service';
+import { LoginDto } from './dto/login.dto';
 
 @Controller('login')
 export class LoginController {
@@ -11,8 +12,7 @@ export class LoginController {
     }
 
     @Post()
-    postLogin(@Body() body: { username: string; password: string }): string {
-        const { username, password } = body;
-        return this.loginService.postLogin(username, password);
+    async postLogin(@Body() loginDto: LoginDto): Promise<string> {
+        return await this.loginService.postLogin(loginDto);
     }
 }
