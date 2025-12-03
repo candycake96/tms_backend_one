@@ -1,0 +1,57 @@
+
+CREATE TABLE vehicle_costs (
+    costs_id INT IDENTITY(1,1) PRIMARY KEY,         -- คีย์หลัก
+    costs_type_vehicle VARCHAR(255),                    -- ชื่อประเภทรถ
+    price_vehicle DECIMAL(10,2),                        -- ราคารถทั้งหมด
+    service_life INT,                               -- อายุการใช้งานรถ (ปี)
+    interest_rate DECIMAL(10,2),                    -- อัตราดอกเบี้ยต่อปี (%)
+    Installments INT,                               -- จำนวนงวดผ่อนชำระ
+    residual_value DECIMAL(10,2),                   -- ราคาซาก (% ต่อปี)
+    purchase_month INT,                             -- จำนวนเดือนการใช้งานต่อเดือน
+    light_duty_vehicle DECIMAL(10,2),               -- อัตราเชื้อเพลิงรถเบา
+    heavy_duty_vehicle DECIMAL(10,2),               -- อัตราเชื้อเพลิงรถหนัก
+    tyre_price DECIMAL(10,2),                       -- ราคายางต่อเส้น
+    tyre_count INT,                                 -- จำนวนยางทั้งหมด
+    tire_mileage_limit DECIMAL(10,2),               -- อายุการใช้งานยาง (ระยะทาง)
+
+    average_speed DECIMAL(10,2),                    -- ความเร็วเฉลี่ย (กม./ชม.)
+    woking_hours DECIMAL(10,2),                     -- เวลาทำงาน (ชม.)
+    rest_time DECIMAL(10,2),                        -- เวลาพัก
+    origin_stop_time DECIMAL(10,2),                 -- เวลาหยุดที่ต้นทาง
+    destination_stop_time DECIMAL(10,2),            -- เวลาหยุดที่ปลายทาง
+    container_rest_time DECIMAL(10,2),              -- เวลารับ/คืนตู้สินค้า
+
+    driver_salary DECIMAL(10,2),                    -- เงินเดือนพนักงานขับรถ
+    vehicle_premium_amount DECIMAL(10,2),           -- เบี้ยประกันภัยรถ
+    cargo_premium_amount DECIMAL(10,2),             -- เบี้ยประกันภัยสินค้า
+    registration_fee DECIMAL(10,2),                 -- ค่าทะเบียนรถต่อปี
+    tax_fee DECIMAL(10,2)                           -- ค่าพรบ.
+    car_loan_payment DECIMAL(10,2)                  -- ค่าผ่อนรถ
+    gps_installation DECIMAL(10,2)                  -- ค่า gps.
+);
+
+
+CREATE TABLE customers (
+    customer_id INT IDENTITY(1,1) PRIMARY KEY,      -- รหัสลูกค้า (PK)
+    customer_code VARCHAR(50) UNIQUE,               -- รหัสลูกค้าสำหรับอ้างอิง เช่น CUST001
+    customer_name VARCHAR(255) NOT NULL,            -- ชื่อลูกค้า/บริษัท
+    contact_name VARCHAR(255),                      -- ชื่อผู้ติดต่อ
+    phone VARCHAR(50),                              -- เบอร์โทร
+    email VARCHAR(255),                             -- อีเมล
+    address VARCHAR(500),                           -- ที่อยู่ลูกค้า
+    tax_id VARCHAR(50),                             -- เลขประจำตัวผู้เสียภาษี
+
+    province VARCHAR(100),                          -- จังหวัด
+    district VARCHAR(100),                          -- อำเภอ
+    sub_district VARCHAR(100),                      -- ตำบล
+    postal_code VARCHAR(10),                        -- รหัสไปรษณีย์
+
+    credit_limit DECIMAL(10,2),                     -- วงเงินเครดิต
+    is_active BIT DEFAULT 1,                        -- ใช้งานอยู่หรือไม่ (1=Active, 0=Inactive)
+
+    created_at DATETIME DEFAULT GETDATE(),          -- วันที่สร้าง
+    updated_at DATETIME NULL                        -- วันที่แก้ไขล่าสุด
+);
+
+
+
