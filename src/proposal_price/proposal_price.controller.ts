@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ProposalPriceService } from './proposal_price.service';
-import { ProposalPriceAddDto } from './proposal_price.dto';
+import { ProposalPriceAddDto, ProposalPriceEditDto } from './proposal_price.dto';
 
 
 @Controller('proposal-price')
@@ -18,7 +18,11 @@ constructor(private readonly proposalPriceService: ProposalPriceService) {}
     return await this.proposalPriceService.postProposalPrice(proposalPriceAddDto);
   }
 
-  
+
+  @Post('update')
+  async postProposalUpdate(@Body() proposalPriceEditDto: ProposalPriceEditDto) {
+    return await  this.proposalPriceService.postproposalUpdate(proposalPriceEditDto);
+  }
   
 }
 

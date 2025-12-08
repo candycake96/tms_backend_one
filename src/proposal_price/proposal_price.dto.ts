@@ -163,6 +163,6 @@ export class ProposalPriceEditDto {
   @IsNumber()
   gps_installation: number;
 
-  @IsNumber()
-  woking_hours: number;
 }
+
+

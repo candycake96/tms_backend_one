@@ -250,10 +250,10 @@ export class ProposalPriceService {
             tyre_count: tyre_count,
             tyre_price: tyre_price,
             vehicle_premium_amount: vehicle_premium_amount,
-            working_hours: working_hours,
+            working_hours: working_hours
         } ;
-        try
-        {
+        try {
+         console.log('params', params);
             const result = await this.db.executeQuery("access", sqlQuery, params);
          return {
                 message: 'success',
