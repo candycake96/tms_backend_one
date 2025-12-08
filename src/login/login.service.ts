@@ -93,6 +93,7 @@ export class LoginService {
                 lname: user.lname,
                 roles: payload.roles,
             },
+            
         };
     }
 }

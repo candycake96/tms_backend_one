@@ -3,7 +3,7 @@ CREATE TABLE vehicle_costs (
     costs_id INT IDENTITY(1,1) PRIMARY KEY,         -- คีย์หลัก
     costs_type_vehicle VARCHAR(255),                    -- ชื่อประเภทรถ
     price_vehicle DECIMAL(10,2),                        -- ราคารถทั้งหมด
-    service_life INT,                               -- อายุการใช้งานรถ (ปี)
+    lifespan INT,                               -- อายุการใช้งานรถ (ปี)
     interest_rate DECIMAL(10,2),                    -- อัตราดอกเบี้ยต่อปี (%)
     Installments INT,                               -- จำนวนงวดผ่อนชำระ
     residual_value DECIMAL(10,2),                   -- ราคาซาก (% ต่อปี)
