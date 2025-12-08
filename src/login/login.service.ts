@@ -90,10 +90,9 @@ export class LoginService {
                 id: user.id_emp,
                 email: user.email,
                 fname: user.fname,
-                lname: user.lname,
+                lname: user.lname, 
                 roles: payload.roles,
             },
-            
         };
     }
 }

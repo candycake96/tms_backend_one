@@ -132,10 +132,38 @@ const query = `
     message: 'success', 
     insertId: result[0]?.costs_id ?? null 
   };
+
 } catch (error) {
   console.error('Insert Error:', error);
   throw new InternalServerErrorException('Database Insert Failed');
 }
 
   }
+
+
+async getproposal() {
+  try {
+    const result = await this.db.executeQuery(
+        "access",
+      `SELECT * FROM vehicle_costs`
+    );
+
+    return {
+      success: true,
+      data: result,
+    };
+  } catch (error) {
+    console.error("DB Error:", error);
+
+    return {
+      success: false,
+      message: "ไม่สามารถดึงข้อมูลได้",
+      error,
+    };
+  }
+}
+
+
+
+
 }
