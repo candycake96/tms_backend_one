@@ -163,6 +163,29 @@ export class ProposalPriceService {
         }
     }
 
+        async getproposal_id(id: string) {
+        try {
+            const result = await this.db.executeQuery(
+                "access",
+                `SELECT * FROM vehicle_costs WHERE costs_id = @id `,
+                {id: id}
+            );
+
+            return {
+                success: true,
+                data: result,
+            };
+        } catch (error) {
+            console.error("DB Error:", error);
+
+            return {
+                success: false,
+                message: "ไม่สามารถดึงข้อมูลได้",
+                error,
+            };
+        }
+    }
+
     async postproposalUpdate(
         proposalPriceEditDto: ProposalPriceEditDto
     ): Promise<any> {
